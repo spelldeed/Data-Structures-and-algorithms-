@@ -146,6 +146,7 @@ int main()
 		cout << "\nEnter 1 to continue 0 to exit\n";
 		cin >> ans;
 	} while (ans != 0);
+
 	
 }
 

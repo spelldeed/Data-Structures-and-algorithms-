@@ -135,8 +135,8 @@ void bt::Postorder(node* n)
 		return;
 	else
 	{
-		Inorder(n->left);
-		Inorder(n->right);
+		Postorder(n->left);
+		Postorder(n->right);
 		cout << n->data << " ";
 
 	}

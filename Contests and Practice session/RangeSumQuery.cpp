@@ -28,10 +28,6 @@ int main()
             memo[i] = memo[i - 1] + nums[i];
         
     }
-    fo(i, 0, n, 1)
-    {
-        cout << memo[i] << " ";
-    }
     cout << "\n";
     cin >> t;
 	while (t--)

@@ -115,7 +115,7 @@ int main()
 	cout << "Enter number of edges and nodes\n";
 	cin >> n>>m;
 	int x, y,z;
-	cout << "Enter node value, connected to and the weight of the edge respectively";
+	cout << "Enter node value, connected to and the weight of the edge respectively\n";
 	for (int i = 0; i <= (n - 1); i++)
 	{
 		cin >> x >> y>>z;

@@ -2,69 +2,67 @@
 #include<vector>
 #include<map>
 using namespace std;
-class Graph
-{
-public:
-	int n;
-	map<int, vector<int>> mp;
-	map<int, bool> visited;
-	Graph(int n)
-	{
-		this->n = n;
-	}
-	void connect(int, int);
-	void DFS(int);
-	void print();
-};
-void Graph::connect(int x, int y)
+map<int, vector<int>> mp;
+map<int, bool> visited;
+int n;
+void connect(int x, int y)
 {
 	mp[x].push_back(y);
-	mp[y].push_back(x);//Comment out this line for directed graph.
 	visited[x] = false;
 	visited[y] = false;
 }
-void Graph::DFS(int k)
+void dfs(int x)
 {
-	if (visited[k])
+	if (visited[x])
 		return;
-	visited[k] = true;
-	cout << k << " ";
-	auto it=mp[k].begin();
-	for (it = mp[k].begin(); it != mp[k].end(); it++)
-	{	
-		if (!(visited[*it]))
-			DFS(*it);
+	visited[x] = true;
+	cout << x << " ";
+	for (auto& y : mp[x])
+	{
+		dfs(y);
 	}
 }
-void Graph::print()
+void dfs_for_all()
+{
+	auto it = mp.begin();
+	for (it = mp.begin(); it != mp.end(); it++)
+	{
+		for (auto y : it->second)
+		{
+			if (visited[y])
+				continue;
+			cout << y << " ";
+		}
+	}
+}
+void printk()
 {
 	auto it = mp.begin();
 	for (it = mp.begin(); it != mp.end(); it++)
 	{
 		cout << it->first << " : ";
 		for (auto x : it->second)
+		{
 			cout << x << " ";
+		}
 		cout << "\n";
-
 	}
 }
 int main()
 {
-	int a,k;
-	cin >> a;
-	Graph g(a);
-	int m, n;
-	for (int i = 0; i <= (a - 1); i++)
+	cout << "Enter the the number of Edges\n";
+	cin >> n;
+	int x, y;
+	for (int i = 0; i <= (n - 1); i++)
 	{
-		cin >> m >> n;
-		g.connect(m, n);
+		cin >> x >> y;
+		connect(x, y);
 	}
-	cout << "Enter The node \n";
-	cin >> k;
-	g.DFS(k);
+	cout << "Enter the node you would like to start from : ";
+	int c;
+	cin >> c;
+	dfs(c);
+	dfs_for_all();
 	cout << "\n----------------------------------------------------------Each Nodes and their respective connections------------------------------------------------------------\n";
-	g.print();
-	cout << "\n";
-	
-	
+	printk();
 }

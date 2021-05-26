@@ -64,7 +64,7 @@ void dfs(int x)
 				break;
 			}
 		}
-		if ((!check) && (!checkvisi))
+		if ((!check) && (!checkvisi)) // If there isn't any node with indegree-->  0 and also we still have unvisited node in our graph then rest of the graph is DAG.
 		{
 			cout << "\n\nGraph is not DAG anymore\n";
 			break;
